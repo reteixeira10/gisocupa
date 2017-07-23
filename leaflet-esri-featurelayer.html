@@ -22,29 +22,33 @@
 
   <style>
     body { margin:0; padding:0; }
-    #map { position: absolute; top:0; bottom:0; right:0; left:0; }
+    #mapid { position: absolute; top:0; bottom:0; right:0; left:0; }
   </style>
 </head>
 <body>
 
-  <div id="map"></div>
+  <div id="mapid"></div>
 
   <script>
-    var map = L.map('map').setView([45.526, -122.667], 13);
 
-  // L.esri.basemapLayer('Streets').addTo(map);
-  
-  L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia3Jla3RvIiwiYSI6ImNqNTVucjU1dzBkZjMyeHQ2OTYzcmY2bHgifQ.8QZMKxtCMwU-fTFwnIiYAA', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox.dark',
-    accessToken: 'pk.eyJ1Ijoia3Jla3RvIiwiYSI6ImNqNTVucjU1dzBkZjMyeHQ2OTYzcmY2bHgifQ.8QZMKxtCMwU-fTFwnIiYAA'
-  }).addTo(map);
+    var mymap = L.map('mapid').setView([-15.796, -47.888], 5);
 
-  L.esri.featureLayer({
-    url: 'https://services.arcgis.com/rOo16HdIMeOBI4Mb/arcgis/rest/services/Heritage_Trees_Portland/FeatureServer/0'
-  }).addTo(map);
-</script>
+
+
+    // L.esri.basemapLayer('Streets').addTo(map);
+    
+    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia3Jla3RvIiwiYSI6ImNqNTVucjU1dzBkZjMyeHQ2OTYzcmY2bHgifQ.8QZMKxtCMwU-fTFwnIiYAA', {
+      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+      maxZoom: 18,
+      id: 'mapbox.dark',
+      accessToken: 'pk.eyJ1Ijoia3Jla3RvIiwiYSI6ImNqNTVucjU1dzBkZjMyeHQ2OTYzcmY2bHgifQ.8QZMKxtCMwU-fTFwnIiYAA'
+    }).addTo(mymap);
+
+    L.esri.featureLayer({
+      url: 'http://mapasinterativos.ibge.gov.br/arcgis/rest/services/LOCALIDADES/MapServer/0'
+    }).addTo(mymap);
+
+  </script>
 
 </body>
 </html>
