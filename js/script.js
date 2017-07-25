@@ -7,6 +7,8 @@ var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</
 
 var dark   = L.tileLayer(mbUrl, {id: 'mapbox.dark', attribution: mbAttr}),
     streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
+    satellite = L.tileLayer(mbUrl, {id: 'mapbox.satellite',   attribution: mbAttr});
+    outdoors = L.tileLayer(mbUrl, {id: 'mapbox.outdoors',   attribution: mbAttr});
 
 var mymap = L.map('mapid', {
   center: [-15.773, -47.759],
@@ -68,7 +70,9 @@ hidro3.bindPopup(function (error, featureCollection) {
 
 var baseLayers = {
   "Dark Gray": dark,
-  "Streets": streets
+  "Streets": streets,
+  "Satellite" : satellite,
+  "Outdoors" : outdoors
 };
 
 var overlays = {
