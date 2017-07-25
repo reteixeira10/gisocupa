@@ -1,9 +1,26 @@
+Coisas para implementar
+
 Inserir popup ao clicar nos objetos
 Inserir layerlist>ok
 Inserir homebutton>ok
 Inserir medidos de distância>ok
 Inserir basemap galeria>ok
+Inserir atribute table
+Inserir legenda
+=====================================
+Detalhes a fazer:
+
+Inserir borda no measure
+Icone da casinha no home button esta vindo de fora e dando problema.
 
 =====================================
 
-Inserir borda no measure
+
+>Usar o leaflet para criar a aplicação
+
+
+>Usar os dados do GDF para provimento de dados
+
+
+>Usar o github pages para hospedar a aplicação(https://krekto.github.io/leaflet/).
+No github, no repositório do projeto, clicar em settings, depois em github pages escolher a branch e salvar.
