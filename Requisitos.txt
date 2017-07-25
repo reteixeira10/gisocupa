@@ -1,5 +1,5 @@
 Inserir popup ao clicar nos objetos
 Inserir layerlist>ok
-Inserir homebutton
+Inserir homebutton>ok
 Inserir medidos de distância
 Inserir basemap galeria>ok

@@ -11,37 +11,43 @@ var dark   = L.tileLayer(mbUrl, {id: 'mapbox.dark', attribution: mbAttr}),
 var mymap = L.map('mapid', {
   center: [-15.796, -47.888],
   zoom: 12,
+  zoomControl: false, //Não inclui o zoom default do leaflet
   layers: [dark, mylayer]
 });
+
+//Add leaflet.zoomhome plugin ao projeto
+var zoomHome = L.Control.zoomHome();
+zoomHome.addTo(mymap);
+
 
 //Add scale ao mapa
 L.control.scale({imperial: false}).addTo(mymap);
 
 // Aqui vão algumas coisas importantes :
-// A layer do tipo dinânimo carrega com a tematização , ja mapserver normal não carrega a tematização 
+// A layer do tipo dinânimo carrega com a tematização , ja mapserver normal não carrega a tematização
 // Quando tem um grupo de layers não esta carregando, ainda não sei porque.
 
 var mylayer = 'https://www.geoservicos2.segeth.df.gov.br/arcgis/rest/services/Hidrografia/HIDROGRAFIA/MapServer';
 
 var hidro1 = L.esri.dynamicMapLayer({
   url: mylayer,
-  layers: [1],//Carrega uma layer específica em um group layers 
+  layers: [1],//Carrega uma layer específica em um group layers
   useCors: false
 });
 
 var hidro2 = L.esri.dynamicMapLayer({
   url: mylayer,
-  layers: [2],//Carrega uma layer específica em um group layers 
+  layers: [2],//Carrega uma layer específica em um group layers
   useCors: false
 });
 
 var hidro3 = L.esri.dynamicMapLayer({
   url: mylayer,
-  layers: [3],//Carrega uma layer específica em um group layers 
+  layers: [3],//Carrega uma layer específica em um group layers
   useCors: false
 });
 
-//Exemplo de popup limples só para a camada de lagos 
+//Exemplo de popup limples só para a camada de lagos
 hidro3.bindPopup(function (error, featureCollection) {
     if(error || featureCollection.features.length === 0) {
       return false;
