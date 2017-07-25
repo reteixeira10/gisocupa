@@ -14,6 +14,9 @@ var mymap = L.map('mapid', {
   layers: [dark, mylayer]
 });
 
+//Add scale ao mapa
+L.control.scale({imperial: false}).addTo(mymap);
+
 // Aqui vão algumas coisas importantes :
 // A layer do tipo dinânimo carrega com a tematização , ja mapserver normal não carrega a tematização 
 // Quando tem um grupo de layers não esta carregando, ainda não sei porque.
@@ -38,6 +41,14 @@ var hidro3 = L.esri.dynamicMapLayer({
   useCors: false
 });
 
+//Exemplo de popup limples só para a camada de lagos 
+hidro3.bindPopup(function (error, featureCollection) {
+    if(error || featureCollection.features.length === 0) {
+      return false;
+    } else {
+      return 'Nome do lago: ' + featureCollection.features[0].properties.nome;
+    }
+  });
 
 var baseLayers = {
   "Dark Gray": dark,
