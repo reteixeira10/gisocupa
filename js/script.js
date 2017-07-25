@@ -1,25 +1,54 @@
-var mymap = L.map('mapid').setView([-15.796, -47.888], 12);
+var mylayer = L.layerGroup();
 
-// L.esri.basemapLayer('Streets').addTo(mymap);
+var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3Jla3RvIiwiYSI6ImNqNTVucjU1dzBkZjMyeHQ2OTYzcmY2bHgifQ.8QZMKxtCMwU-fTFwnIiYAA';
 
-L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia3Jla3RvIiwiYSI6ImNqNTVucjU1dzBkZjMyeHQ2OTYzcmY2bHgifQ.8QZMKxtCMwU-fTFwnIiYAA', {
-  attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-  maxZoom: 18,
-  id: 'mapbox.dark',
-  accessToken: 'pk.eyJ1Ijoia3Jla3RvIiwiYSI6ImNqNTVucjU1dzBkZjMyeHQ2OTYzcmY2bHgifQ.8QZMKxtCMwU-fTFwnIiYAA'
-}).addTo(mymap);
+var dark   = L.tileLayer(mbUrl, {id: 'mapbox.dark', attribution: mbAttr}),
+    streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
 
-// L.esri.featureLayer({
-//   url: 'http://mapasinterativos.ibge.gov.br/arcgis/rest/services/BIOMA/MapServer/0'
-// }).addTo(mymap);
+var mymap = L.map('mapid', {
+  center: [-15.796, -47.888],
+  zoom: 12,
+  layers: [dark, mylayer]
+});
 
 // Aqui vão algumas coisas importantes :
 // A layer do tipo dinânimo carrega com a tematização , ja mapserver normal não carrega a tematização 
 // Quando tem um grupo de layers não esta carregando, ainda não sei porque.
 
-L.esri.dynamicMapLayer({
-  url: 'https://www.geoservicos2.segeth.df.gov.br/arcgis/rest/services/Hidrografia/HIDROGRAFIA/MapServer',
-  opacity : 0.9,
-  layers: [1,2,3],//Carrega uma layer específica em um group layers 
+var mylayer = 'https://www.geoservicos2.segeth.df.gov.br/arcgis/rest/services/Hidrografia/HIDROGRAFIA/MapServer';
+
+var hidro1 = L.esri.dynamicMapLayer({
+  url: mylayer,
+  layers: [1],//Carrega uma layer específica em um group layers 
   useCors: false
-}).addTo(mymap);
+});
+
+var hidro2 = L.esri.dynamicMapLayer({
+  url: mylayer,
+  layers: [2],//Carrega uma layer específica em um group layers 
+  useCors: false
+});
+
+var hidro3 = L.esri.dynamicMapLayer({
+  url: mylayer,
+  layers: [3],//Carrega uma layer específica em um group layers 
+  useCors: false
+});
+
+
+var baseLayers = {
+  "Dark Gray": dark,
+  "Streets": streets
+};
+
+var overlays = {
+  "Rios Pincipais": hidro1,
+  "Rios Secundários": hidro2,
+  "Lagos e Lagoas": hidro3
+};
+
+// http://leafletjs.com/reference-1.0.3.html#control-layers
+L.control.layers(baseLayers,overlays).addTo(mymap);

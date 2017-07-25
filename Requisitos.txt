@@ -1,0 +1,5 @@
+Inserir popup ao clicar nos objetos
+Inserir layerlist
+Inserir homebutton
+Inserir medidos de distância
+Inserir basemap galeria
