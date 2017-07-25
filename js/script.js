@@ -12,13 +12,21 @@ var mymap = L.map('mapid', {
   center: [-15.796, -47.888],
   zoom: 12,
   zoomControl: false, //Não inclui o zoom default do leaflet
-  layers: [dark, mylayer]
+  layers: [streets, mylayer]
 });
+
+var measureControl = L.control.measure({
+  position: 'topright',
+  primaryLengthUnit: 'meters',
+  secondaryLengthUnit: 'kilometers',
+  primaryAreaUnit: 'sqmeters',
+  secondaryAreaUnit: undefined
+});
+measureControl.addTo(mymap);
 
 //Add leaflet.zoomhome plugin ao projeto
 var zoomHome = L.Control.zoomHome();
 zoomHome.addTo(mymap);
-
 
 //Add scale ao mapa
 L.control.scale({imperial: false}).addTo(mymap);
