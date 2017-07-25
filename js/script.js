@@ -9,8 +9,8 @@ var dark   = L.tileLayer(mbUrl, {id: 'mapbox.dark', attribution: mbAttr}),
     streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
 
 var mymap = L.map('mapid', {
-  center: [-15.796, -47.888],
-  zoom: 12,
+  center: [-15.773, -47.759],
+  zoom: 11,
   zoomControl: false, //Não inclui o zoom default do leaflet
   layers: [streets, mylayer]
 });
@@ -20,7 +20,9 @@ var measureControl = L.control.measure({
   primaryLengthUnit: 'meters',
   secondaryLengthUnit: 'kilometers',
   primaryAreaUnit: 'sqmeters',
-  secondaryAreaUnit: undefined
+  secondaryAreaUnit: undefined,
+  activeColor: '#c0067b',
+  completedColor: '#ff92b5'
 });
 measureControl.addTo(mymap);
 
