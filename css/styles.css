@@ -1,2 +1,7 @@
 body { margin:0; padding:0; }
     #mapid { position: absolute; top:0; bottom:0; right:0; left:0; }
+
+.leaflet-control-measure .leaflet-control-measure-toggle, .leaflet-control-measure .leaflet-control-measure-toggle:hover{
+    border: 2px solid rgba(0,0,0,0.2);
+    background-clip: padding-box;
+  }
