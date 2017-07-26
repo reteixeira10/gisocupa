@@ -18,7 +18,7 @@ var mymap = L.map('mapid', {
     center: [-15.773, -47.759],
     zoom: 11,
     zoomControl: false, //Não inclui o zoom default do leaflet
-    layers: [streets]
+    layers: [satellite]
 });
 
 
@@ -52,7 +52,7 @@ L.control.scale({imperial: false}).addTo(mymap);
 // A layer do tipo dinânimo carrega com a tematização , ja mapserver normal não carrega a tematização
 // Quando tem um grupo de layers não esta carregando, ainda não sei porque.
 
-var serv_hidro = 'https://www.geoservicos2.segeth.df.gov.br/arcgis/rest/services/Hidrografia/HIDROGRAFIA/MapServer';
+var serv_hidro = 'https://www.geoservicos1.segeth.df.gov.br/arcgis/rest/services/Hidrografia/HIDROGRAFIA/MapServer';
 
 //Atribui a primeira layer do grupo a variável rioprin
 var rioprin = L.esri.dynamicMapLayer({
@@ -75,9 +75,9 @@ var lagos = L.esri.dynamicMapLayer({
   useCors: false
 });
 
-var serv_lote_ocupa = 'https://www.geoservicos2.segeth.df.gov.br/arcgis/rest/services/Cadastro/LOTE_SITURB_OCUPACAO/MapServer';
+var serv_lote_ocupa = 'https://www.geoservicos1.segeth.df.gov.br/arcgis/rest/services/Cadastro/LOTE_SITURB_OCUPACAO/MapServer';
 
-//Atribui a terceira layer do grupo a variável lagos
+//Atribui a layer lote_ocupa
 var lote_ocupa = L.esri.dynamicMapLayer({
   url: serv_lote_ocupa,
   layers: [0],//Carrega uma layer específica em um group layers
