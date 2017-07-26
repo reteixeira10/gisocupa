@@ -1,4 +1,5 @@
-var mylayer = L.layerGroup();
+var serv_hidro = L.layerGroup();
+var serv_lote_ocupa = L.layerGroup();
 
 //Define os atributos do mapa e insere o meu token do mopbox
 var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -17,7 +18,7 @@ var mymap = L.map('mapid', {
     center: [-15.773, -47.759],
     zoom: 11,
     zoomControl: false, //Não inclui o zoom default do leaflet
-    layers: [streets, mylayer]
+    layers: [streets]
 });
 
 
@@ -51,31 +52,40 @@ L.control.scale({imperial: false}).addTo(mymap);
 // A layer do tipo dinânimo carrega com a tematização , ja mapserver normal não carrega a tematização
 // Quando tem um grupo de layers não esta carregando, ainda não sei porque.
 
-var mylayer = 'https://www.geoservicos2.segeth.df.gov.br/arcgis/rest/services/Hidrografia/HIDROGRAFIA/MapServer';
+var serv_hidro = 'https://www.geoservicos2.segeth.df.gov.br/arcgis/rest/services/Hidrografia/HIDROGRAFIA/MapServer';
 
-//Atribui a primeira layer do grupo a variável hidro1
-var hidro1 = L.esri.dynamicMapLayer({
-  url: mylayer,
+//Atribui a primeira layer do grupo a variável rioprin
+var rioprin = L.esri.dynamicMapLayer({
+  url: serv_hidro,
   layers: [1],//Carrega uma layer específica em um group layers
   useCors: false
 });
 
-//Atribui a segunda layer do grupo a variável hidro2
-var hidro2 = L.esri.dynamicMapLayer({
-  url: mylayer,
+//Atribui a segunda layer do grupo a variável riosec
+var riosec = L.esri.dynamicMapLayer({
+  url: serv_hidro,
   layers: [2],//Carrega uma layer específica em um group layers
   useCors: false
 });
 
-//Atribui a terceira layer do grupo a variável hidro3
-var hidro3 = L.esri.dynamicMapLayer({
-  url: mylayer,
+//Atribui a terceira layer do grupo a variável lagos
+var lagos = L.esri.dynamicMapLayer({
+  url: serv_hidro,
   layers: [3],//Carrega uma layer específica em um group layers
   useCors: false
 });
 
+var serv_lote_ocupa = 'https://www.geoservicos2.segeth.df.gov.br/arcgis/rest/services/Cadastro/LOTE_SITURB_OCUPACAO/MapServer';
+
+//Atribui a terceira layer do grupo a variável lagos
+var lote_ocupa = L.esri.dynamicMapLayer({
+  url: serv_lote_ocupa,
+  layers: [0],//Carrega uma layer específica em um group layers
+  useCors: false
+});
+
 //Exemplo de popup limples só para a camada de lagos VAI SER REMOVIDO OU ALTERADO
-hidro3.bindPopup(function (error, featureCollection) {
+lagos.bindPopup(function (error, featureCollection) {
     if(error || featureCollection.features.length === 0) {
       return false;
     } else {
@@ -92,9 +102,10 @@ var baseLayers = {
 };
 
 var overlays = {
-  "Rios Pincipais": hidro1,
-  "Rios Secundários": hidro2,
-  "Lagos e Lagoas": hidro3
+  "Rios Pincipais": rioprin,
+  "Rios Secundários": riosec,
+  "Lagos e Lagoas": lagos,
+  "Lote Ocupação": lote_ocupa
 };
 
 // http://leafletjs.com/reference-1.0.3.html#control-layers
