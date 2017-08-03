@@ -2,6 +2,7 @@ Coisas para implementar
 
 Inserir popup ao clicar nos objetos
 Inserir layerlist>ok
+Inserir Streetview
 Inserir homebutton>ok
 Inserir medidos de distância>ok
 Inserir basemap galeria>ok

@@ -24,7 +24,7 @@ var mymap = L.map('mapid', {
 
 
 //Cria o miniMap no canppo inferior direito - obs. foi definido um novo mapa aqui: osm
-var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 var osmAttrib='Map data &copy; OpenStreetMap contributors';
 //Plugin magic goes here! Note that you cannot use the same layer object again, as that will confuse the two map controls
 var osm = new L.TileLayer(osmUrl, {minZoom: 0, maxZoom: 18, attribution: osmAttrib });
@@ -53,7 +53,7 @@ L.control.scale({imperial: false}).addTo(mymap);
 // A layer do tipo dinânimo carrega com a tematização , ja mapserver normal não carrega a tematização
 // Quando tem um grupo de layers não esta carregando, ainda não sei porque.
 
-var serv_hidro = 'https://www.geoservicos1.segeth.df.gov.br/arcgis/rest/services/Hidrografia/HIDROGRAFIA/MapServer';
+var serv_hidro = 'https://www.geoservicos2.segeth.df.gov.br/arcgis/rest/services/Hidrografia/HIDROGRAFIA/MapServer';
 
 //Atribui a primeira layer do grupo a variável rioprin
 var rioprin = L.esri.dynamicMapLayer({
@@ -77,7 +77,7 @@ var lagos = L.esri.dynamicMapLayer({
   useCors: false
 });
 
-var serv_lote_ocupa = 'https://www.geoservicos1.segeth.df.gov.br/arcgis/rest/services/Cadastro/LOTE_SITURB_OCUPACAO/MapServer';
+var serv_lote_ocupa = 'https://www.geoservicos2.segeth.df.gov.br/arcgis/rest/services/Cadastro/LOTE_SITURB_OCUPACAO/MapServer';
 
 //Atribui a layer lote_ocupa
 var lote_ocupa = L.esri.dynamicMapLayer({
@@ -87,7 +87,7 @@ var lote_ocupa = L.esri.dynamicMapLayer({
 });
 
 
-var areavermelha = 'https://www.geoservicos1.segeth.df.gov.br/arcgis/rest/services/Limites/AREAS_VERMELHAS/MapServer';
+var areavermelha = 'https://www.geoservicos2.segeth.df.gov.br/arcgis/rest/services/Limites/AREAS_VERMELHAS/MapServer';
 
 //Atribui a layer de limite do Combate a Grilagem e Ocupação Irregulares
 var limgrila = L.esri.dynamicMapLayer({
@@ -117,10 +117,10 @@ lagos.bindPopup(function (error, featureCollection) {
 
 //Cria os objetos para conter as layers que estarão no control layers
 var baseLayers = {
-  "Dark Gray": dark,
-  "Streets": streets,
-  "Satellite" : satellite,
-  "Outdoors" : outdoors
+  "Mapabase Cinza Escuro": dark,
+  "Mapabase de Ruas": streets,
+  "Mapabase de Imagem Aérea" : satellite,
+  "Mapabase de Ruas e Locais" : outdoors
 };
 
 var overlays = {
