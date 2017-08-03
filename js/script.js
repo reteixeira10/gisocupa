@@ -17,6 +17,7 @@ var dark   = L.tileLayer(mbUrl, {id: 'mapbox.dark', attribution: mbAttr}),
 var mymap = L.map('mapid', {
     center: [-15.773, -47.759],
     zoom: 11,
+
     zoomControl: false, //Não inclui o zoom default do leaflet
     layers: [satellite]
 });
@@ -57,6 +58,7 @@ var serv_hidro = 'https://www.geoservicos1.segeth.df.gov.br/arcgis/rest/services
 //Atribui a primeira layer do grupo a variável rioprin
 var rioprin = L.esri.dynamicMapLayer({
   url: serv_hidro,
+
   layers: [1],//Carrega uma layer específica em um group layers
   useCors: false
 });
@@ -84,6 +86,26 @@ var lote_ocupa = L.esri.dynamicMapLayer({
   useCors: false
 });
 
+
+var areavermelha = 'https://www.geoservicos1.segeth.df.gov.br/arcgis/rest/services/Limites/AREAS_VERMELHAS/MapServer';
+
+//Atribui a layer de limite do Combate a Grilagem e Ocupação Irregulares
+var limgrila = L.esri.dynamicMapLayer({
+  url: areavermelha,
+  layers: [0],//Carrega uma layer específica em um group layers
+  useCors: false,
+  opacity: 0.5
+});
+
+var baseimage2016 =  'https://www.geoservicos.segeth.df.gov.br/ArcGIS/rest/services/Basemap/Foto_2016/MapServer';
+
+//Atribui a layer Foto Aérea 2016
+var base2016 = L.esri.dynamicMapLayer({
+  url: baseimage2016,
+  layers: [0],//Carrega uma layer específica em um group layers
+  useCors: false
+});
+
 //Exemplo de popup limples só para a camada de lagos VAI SER REMOVIDO OU ALTERADO
 lagos.bindPopup(function (error, featureCollection) {
     if(error || featureCollection.features.length === 0) {
@@ -105,7 +127,9 @@ var overlays = {
   "Rios Pincipais": rioprin,
   "Rios Secundários": riosec,
   "Lagos e Lagoas": lagos,
-  "Lote Ocupação": lote_ocupa
+  "Lote Ocupação": lote_ocupa,
+  "Limite Grilagem e Ocupação Irregular": limgrila,
+  "Foto Aérea 2016": base2016
 };
 
 // http://leafletjs.com/reference-1.0.3.html#control-layers
