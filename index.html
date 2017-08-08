@@ -13,12 +13,14 @@
   crossorigin=""/>
   <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet-src.js"
   integrity="sha384-TWB9xRHTlLQmqAngHwD7usGcf4akGf0JP6aHwlgilpmOu2UuBq5aWLsDAh39iSn1"
-  crossorigin=""></script>
+  crossorigin="">    
+  </script>
 
   <!-- Load Esri Leaflet from CDN -->
   <script src="https://unpkg.com/esri-leaflet@2.0.8"
   integrity="sha384-ze7rgny7/YGFxBlVgTBdOABNWe5V9BYjju/qwqJhCU8XJHtuEnRlbUpN5lXyY706"
-  crossorigin=""></script>
+  crossorigin="">    
+  </script>
 
   <!-- Estilo requerido pelo plugin leaflet.zoomhome -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
@@ -32,7 +34,10 @@
   <!-- CSS MiniMap Plugin -->
   <link rel="stylesheet" href="./css/Control.MiniMap.min.css" />
 
-  <!-- CSS que configura o projeto -->
+  <!-- HtmlLegend Plugin -->
+  <link rel="stylesheet" href="./css/L.Control.HtmlLegend.css"/>
+
+   <!-- CSS que configura o projeto -->
   <link rel="stylesheet" href="./css/styles.css">
 
   <!-- Script requerido para o leaflet-measure plugin  -->
@@ -44,8 +49,13 @@
   <!-- MiniMap Plugin -->
 	<script src="./js/Control.MiniMap.min.js" type="text/javascript"></script>
 
+  <!-- HtmlLegend Plugin -->
+  <script src="./js/L.Control.HtmlLegend.min.js"></script>
+
 </head>
+
 <body>
+
   <div id="mapid"></div>
 
   <!-- Script de criação dos elementos de mapa e camadas -->

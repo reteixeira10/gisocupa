@@ -19,7 +19,7 @@ var mymap = L.map('mapid', {
     zoom: 11,
 
     zoomControl: false, //Não inclui o zoom default do leaflet
-    layers: [satellite]
+    layers: [dark]
 });
 
 
@@ -50,8 +50,7 @@ zoomHome.addTo(mymap);
 L.control.scale({imperial: false}).addTo(mymap);
 
 // Aqui vão algumas coisas importantes :
-// A layer do tipo dinânimo carrega com a tematização , ja mapserver normal não carrega a tematização
-// Quando tem um grupo de layers não esta carregando, ainda não sei porque.
+// A layer do tipo dinânica carrega com a tematização , ja mapserver normal não carrega a tematização
 
 var serv_hidro = 'https://www.geoservicos2.segeth.df.gov.br/arcgis/rest/services/Hidrografia/HIDROGRAFIA/MapServer';
 
@@ -85,7 +84,6 @@ var lote_ocupa = L.esri.dynamicMapLayer({
   layers: [0],//Carrega uma layer específica em um group layers
   useCors: false
 });
-
 
 var areavermelha = 'https://www.geoservicos2.segeth.df.gov.br/arcgis/rest/services/Limites/AREAS_VERMELHAS/MapServer';
 
@@ -134,3 +132,75 @@ var overlays = {
 
 // http://leafletjs.com/reference-1.0.3.html#control-layers
 L.control.layers(baseLayers,overlays).addTo(mymap);
+
+
+// htmllegend Plugin 
+var htmlLegend = L.control.htmllegend({
+        position: 'bottomright',
+        
+        legends: [{
+            name: 'Rios Principais',
+            layer: rioprin,
+            elements: [{                
+                html: '',
+                style: {
+                    "background-color": "#0C6CB6",
+                    "width": "15px",
+                    "height": "2px"
+                }
+            }]
+        },{
+            name: 'Rios Secundários',
+            layer: riosec,
+            elements: [{                
+                html: '',
+                style: {
+                    "background-color": "#0C6CB6",
+                    "width": "15px",
+                    "height": "2px"
+                }
+            }]
+        },{
+            name: 'Lagos e Lagoas',
+            layer: lagos,
+            elements: [{                
+                html: '',
+                style: {
+                    "background-color": "#97DBF2",
+                    "width": "15px",
+                    "height": "15px"
+                }
+            }]
+        },{
+            name: 'Lote - Ocupação',
+            layer: lote_ocupa,
+            elements: [{
+                // label: 'Lote - Ocupação',
+                html: '',
+                style: {
+                    "background-color": "#FFEABE",
+                    "width": "15px",
+                    "height": "15px"
+                }
+            }]
+        }, {
+            name: 'Mapa de Combate a Grilagem e Ocupação Irregulares ',
+            layer: limgrila,
+            opacity: 0.5,
+            elements: [{
+                html: '',
+                style: {
+                    "background-color": "#FF7F7F",
+                    "width": "15px",
+                    "height": "15px"
+                }
+            }]
+        }],
+        collapseSimple: true,
+        detectStretched: true,
+        collapsedOnInit: true,
+        defaultOpacity: 0.7,
+        visibleIcon: 'icon icon-eye',
+        hiddenIcon: 'icon icon-eye-slash'
+    });
+    mymap.addControl(htmlLegend);

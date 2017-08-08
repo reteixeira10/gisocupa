@@ -1,6 +1,7 @@
 Coisas para implementar
 
 Inserir popup ao clicar nos objetos
+Inserir link de ajuda
 Inserir layerlist>ok
 Inserir Streetview
 Inserir homebutton>ok
