@@ -2,19 +2,21 @@ Coisas para implementar
 
 Inserir popup ao clicar nos objetos
 Inserir link de ajuda
+Inserir atribute table
+Inserir pesquisa
+Inserir página de ajuda
 Inserir layerlist>ok
 Inserir Streetview
 Inserir homebutton>ok
 Inserir medidos de distância>ok
 Inserir basemap galeria>ok
-Inserir atribute table
-Inserir legenda
-Inserir reordenar layer>ok //obs: As camadas se sobrepões de acordo com a ordem de habilitação > como informar ao user ?
+
+Inserir legenda>ok
+Inserir reordenar layer>ok //obs: As camadas se sobrepões de acordo com a ordem de habilitação
 =====================================
 Detalhes a fazer:
 
-Inserir borda no measure>ok
-Icone da casinha no home button esta vindo de fora e dando problema>ok
+
 
 =====================================
 

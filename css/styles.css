@@ -1,7 +1,30 @@
 body { margin:0; padding:0; }
-    #mapid { position: absolute; top:0; bottom:0; right:0; left:0; }
+#mapid { position: absolute; top:0; bottom:0; right:0; left:0; }
 
 .leaflet-control-measure .leaflet-control-measure-toggle, .leaflet-control-measure .leaflet-control-measure-toggle:hover{
-    border: 2px solid rgba(0,0,0,0.2);
-    background-clip: padding-box;
-  }
+	border: 2px solid rgba(0,0,0,0.2);
+	background-clip: padding-box;
+}
+
+.ajuda{
+	height: 20px;
+	z-index: 999;
+	position: absolute;
+	margin-left: 60px;
+	margin-top: 10px;
+	color: #FFFFFF;
+	background-color: #4C5A59;
+	border-radius: 5px;
+	padding: 3px;
+	font-family: 'Oswald', sans-serif;	
+}
+
+.ajuda>a{
+	color: #FFFFFF;
+	text-decoration: none;	
+}
+
+.ajuda>a:hover{
+	color: #FF0000;
+	text-decoration: none;	
+}
