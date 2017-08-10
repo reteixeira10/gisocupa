@@ -1,5 +1,5 @@
-var serv_hidro = L.layerGroup();
-var serv_lote_ocupa = L.layerGroup();
+// var serv_hidro = L.layerGroup();
+// var serv_lote_ocupa = L.layerGroup();
 
 //Define os atributos do mapa e insere o meu token do mopbox
 var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -19,7 +19,7 @@ var mymap = L.map('mapid', {
     zoom: 11,
 
     zoomControl: false, //Não inclui o zoom default do leaflet
-    layers: [dark]
+    layers: [streets]
 });
 
 
@@ -48,6 +48,9 @@ zoomHome.addTo(mymap);
 
 //Add scale ao mapa
 L.control.scale({imperial: false}).addTo(mymap);
+
+
+//************************************SEÇÃO DE CAMADAS*****************************
 
 // Aqui vão algumas coisas importantes :
 // A layer do tipo dinânica carrega com a tematização , ja mapserver normal não carrega a tematização
@@ -104,7 +107,19 @@ var base2016 = L.esri.dynamicMapLayer({
   useCors: false
 });
 
-//Exemplo de popup limples só para a camada de lagos VAI SER REMOVIDO OU ALTERADO
+
+//************************************SEÇÃO DE POPUPS*****************************
+
+
+
+rioprin.bindPopup(function (error, featureCollection) {
+    if(error || featureCollection.features.length === 0) {
+      return false;
+    } else {
+      return 'Nome do Rio: ' + featureCollection.features[0].properties.nome;
+    }
+});
+
 lagos.bindPopup(function (error, featureCollection) {
     if(error || featureCollection.features.length === 0) {
       return false;
@@ -112,6 +127,18 @@ lagos.bindPopup(function (error, featureCollection) {
       return 'Nome do lago: ' + featureCollection.features[0].properties.nome;
     }
 });
+
+lote_ocupa.bindPopup(function (error, featureCollection) {
+    if(error || featureCollection.features.length === 0) {
+      return false;
+    } else {
+      return 'Nome do lote: ' + featureCollection.features[0].properties.LOTE.nome;
+    }
+});
+
+
+//************************************SEÇÃO DE CONTROL LAYERS*****************************
+
 
 //Cria os objetos para conter as layers que estarão no control layers
 var baseLayers = {
@@ -134,14 +161,17 @@ var overlays = {
 L.control.layers(baseLayers,overlays).addTo(mymap);
 
 
-// htmllegend Plugin 
+
+//************************************SEÇÃO DE LEGENDAS*****************************
+
+// htmllegend Plugin
 var htmlLegend = L.control.htmllegend({
         position: 'bottomright',
-        
+
         legends: [{
             name: 'Rios Principais',
             layer: rioprin,
-            elements: [{                
+            elements: [{
                 html: '',
                 style: {
                     "background-color": "#0C6CB6",
@@ -152,7 +182,7 @@ var htmlLegend = L.control.htmllegend({
         },{
             name: 'Rios Secundários',
             layer: riosec,
-            elements: [{                
+            elements: [{
                 html: '',
                 style: {
                     "background-color": "#0C6CB6",
@@ -163,7 +193,7 @@ var htmlLegend = L.control.htmllegend({
         },{
             name: 'Lagos e Lagoas',
             layer: lagos,
-            elements: [{                
+            elements: [{
                 html: '',
                 style: {
                     "background-color": "#97DBF2",

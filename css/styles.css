@@ -16,15 +16,15 @@ body { margin:0; padding:0; }
 	background-color: #4C5A59;
 	border-radius: 5px;
 	padding: 3px;
-	font-family: 'Oswald', sans-serif;	
+	font-family: 'Oswald', sans-serif;
 }
 
 .ajuda>a{
 	color: #FFFFFF;
-	text-decoration: none;	
+	text-decoration: none;
 }
 
 .ajuda>a:hover{
 	color: #FF0000;
-	text-decoration: none;	
+	text-decoration: none;
 }
