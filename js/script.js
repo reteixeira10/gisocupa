@@ -88,6 +88,7 @@ var lote_ocupa = L.esri.dynamicMapLayer({
   useCors: false
 });
 
+
 var areavermelha = 'https://www.geoservicos2.segeth.df.gov.br/arcgis/rest/services/Limites/AREAS_VERMELHAS/MapServer';
 
 //Atribui a layer de limite do Combate a Grilagem e Ocupação Irregulares
@@ -107,10 +108,7 @@ var base2016 = L.esri.dynamicMapLayer({
   useCors: false
 });
 
-
 //************************************SEÇÃO DE POPUPS*****************************
-
-
 
 rioprin.bindPopup(function (error, featureCollection) {
     if(error || featureCollection.features.length === 0) {
@@ -120,28 +118,24 @@ rioprin.bindPopup(function (error, featureCollection) {
     }
 });
 
-// lagos.bindPopup(function (error, featureCollection) {
-//     if(error || featureCollection.features.length === 0) {
-//       return false;
-//     } else {
-//       return 'Nome do lago: ' + featureCollection.features[0].properties.nome;
-//     }
-// });
-
-lote_ocupa.bindPopup(function (error, featureCollection) {
+lagos.bindPopup(function (error, featureCollection) {
     if(error || featureCollection.features.length === 0) {
       return false;
     } else {
-      return 'Nome do lote: ' + featureCollection.features[0].properties.LOTE.nome;
+      return 'Nome do lago:' + featureCollection.features[0].properties.nome;
     }
 });
 
-lagos.bindPopup(function(evt) {
-            return L.Util.template('<h3>{nome}</h3><hr /><p>This tree is located at {nome} and its scientific name is {nome}.', evt.feature.properties);
-        });
+  lote_ocupa.bindPopup(function (error, featureCollection) {
+      if(error || featureCollection.features.length === 0) {
+        return false;
+      } else {
+        return 'Nome do lote: ' + featureCollection.features[0].properties.Lote + '</br>' +
+               'Endereço: ' + featureCollection.features[0].properties.Endereço;
+      }
+  });
 
 //************************************SEÇÃO DE CONTROL LAYERS*****************************
-
 
 //Cria os objetos para conter as layers que estarão no control layers
 var baseLayers = {

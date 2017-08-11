@@ -28,3 +28,17 @@ body { margin:0; padding:0; }
 	color: #FF0000;
 	text-decoration: none;
 }
+
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+	background: #0e6688;
+color: #fffafa;
+box-shadow: 0 5px 14px rgba(0,0,0,0.4);
+
+}
+
+.leaflet-popup-content-wrapper {
+    padding: 1px;
+    text-align: left;
+    border-radius: 0;
+}
