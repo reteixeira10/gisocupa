@@ -120,13 +120,13 @@ rioprin.bindPopup(function (error, featureCollection) {
     }
 });
 
-lagos.bindPopup(function (error, featureCollection) {
-    if(error || featureCollection.features.length === 0) {
-      return false;
-    } else {
-      return 'Nome do lago: ' + featureCollection.features[0].properties.nome;
-    }
-});
+// lagos.bindPopup(function (error, featureCollection) {
+//     if(error || featureCollection.features.length === 0) {
+//       return false;
+//     } else {
+//       return 'Nome do lago: ' + featureCollection.features[0].properties.nome;
+//     }
+// });
 
 lote_ocupa.bindPopup(function (error, featureCollection) {
     if(error || featureCollection.features.length === 0) {
@@ -136,6 +136,9 @@ lote_ocupa.bindPopup(function (error, featureCollection) {
     }
 });
 
+lagos.bindPopup(function(evt) {
+            return L.Util.template('<h3>{nome}</h3><hr /><p>This tree is located at {nome} and its scientific name is {nome}.', evt.feature.properties);
+        });
 
 //************************************SEÇÃO DE CONTROL LAYERS*****************************
 
