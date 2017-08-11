@@ -130,8 +130,15 @@ lagos.bindPopup(function (error, featureCollection) {
       if(error || featureCollection.features.length === 0) {
         return false;
       } else {
-        return 'Nome do lote: ' + featureCollection.features[0].properties.Lote + '</br>' +
-               'Endereço: ' + featureCollection.features[0].properties.Endereço;
+     return     'Setor: ' + featureCollection.features[0].properties.Setor + '</br>' +
+                'Quadra: ' + featureCollection.features[0].properties.Quadra + '</br>' +
+                'Conjunto: ' + featureCollection.features[0].properties.Conjunto + '</br>' +
+                'Lote: ' + featureCollection.features[0].properties.Lote + '</br>' +
+                'Endereço: ' + featureCollection.features[0].properties.Endereço + '</br>' +
+                ' Complemento: ' + featureCollection.features[0].properties.Complemento + '</br>' +
+                'Cep: ' + featureCollection.features[0].properties.Cep + '</br>' +
+                'Situação: ' + featureCollection.features[0].properties.Situação + '</br>';
+                // 'Região Administrativa: ' + featureCollection.features[0].properties.Região Administrativa + '</br>';
       }
   });
 
