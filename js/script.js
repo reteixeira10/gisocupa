@@ -3,24 +3,24 @@
 
 //Define os atributos do mapa e insere o meu token do mopbox
 var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-            '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-            'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3Jla3RvIiwiYSI6ImNqNTVucjU1dzBkZjMyeHQ2OTYzcmY2bHgifQ.8QZMKxtCMwU-fTFwnIiYAA';
+'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3Jla3RvIiwiYSI6ImNqNTVucjU1dzBkZjMyeHQ2OTYzcmY2bHgifQ.8QZMKxtCMwU-fTFwnIiYAA';
 
 //Define os mapas do mapbox e difine as respectivas variáveis de acesso.
 var dark   = L.tileLayer(mbUrl, {id: 'mapbox.dark', attribution: mbAttr}),
-    streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
-    satellite = L.tileLayer(mbUrl, {id: 'mapbox.satellite',   attribution: mbAttr});
-    outdoors = L.tileLayer(mbUrl, {id: 'mapbox.outdoors',   attribution: mbAttr});
+streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
+satellite = L.tileLayer(mbUrl, {id: 'mapbox.satellite',   attribution: mbAttr});
+outdoors = L.tileLayer(mbUrl, {id: 'mapbox.outdoors',   attribution: mbAttr});
 
 //Cria o mapa
 var mymap = L.map('mapid', {
-    center: [-15.773, -47.759],
-    zoom: 11,
+  center: [-15.773, -47.759],
+  zoom: 11,
 
     zoomControl: false, //Não inclui o zoom default do leaflet
     layers: [streets]
-});
+  });
 
 
 //Cria o miniMap no canppo inferior direito - obs. foi definido um novo mapa aqui: osm
@@ -111,36 +111,36 @@ var base2016 = L.esri.dynamicMapLayer({
 //************************************SEÇÃO DE POPUPS*****************************
 
 rioprin.bindPopup(function (error, featureCollection) {
-    if(error || featureCollection.features.length === 0) {
-      return false;
-    } else {
-      return 'Nome do Rio: ' + featureCollection.features[0].properties.nome;
-    }
+  if(error || featureCollection.features.length === 0) {
+    return false;
+  } else {
+    return 'Nome do Rio: ' + featureCollection.features[0].properties.nome;
+  }
 });
 
 lagos.bindPopup(function (error, featureCollection) {
-    if(error || featureCollection.features.length === 0) {
-      return false;
-    } else {
-      return 'Nome do lago:' + featureCollection.features[0].properties.nome;
-    }
+  if(error || featureCollection.features.length === 0) {
+    return false;
+  } else {
+    return 'Nome do lago: ' + featureCollection.features[0].properties.nome;
+  }
 });
 
-  lote_ocupa.bindPopup(function (error, featureCollection) {
-      if(error || featureCollection.features.length === 0) {
-        return false;
-      } else {
-     return     'Setor: ' + featureCollection.features[0].properties.Setor + '</br>' +
-                'Quadra: ' + featureCollection.features[0].properties.Quadra + '</br>' +
-                'Conjunto: ' + featureCollection.features[0].properties.Conjunto + '</br>' +
-                'Lote: ' + featureCollection.features[0].properties.Lote + '</br>' +
-                'Endereço: ' + featureCollection.features[0].properties.Endereço + '</br>' +
-                ' Complemento: ' + featureCollection.features[0].properties.Complemento + '</br>' +
-                'Cep: ' + featureCollection.features[0].properties.Cep + '</br>' +
-                'Situação: ' + featureCollection.features[0].properties.Situação + '</br>';
-                // 'Região Administrativa: ' + featureCollection.features[0].properties.Região Administrativa + '</br>';
-      }
-  });
+lote_ocupa.bindPopup(function (error, featureCollection) {
+  if(error || featureCollection.features.length === 0) {
+    return false;
+  } else {
+   return     'Setor: ' + featureCollection.features[0].properties.Setor + '</br>' +
+   'Quadra: ' + featureCollection.features[0].properties.Quadra + '</br>' +
+   'Conjunto: ' + featureCollection.features[0].properties.Conjunto + '</br>' +
+   'Lote: ' + featureCollection.features[0].properties.Lote + '</br>' +
+   'Endereço: ' + featureCollection.features[0].properties.Endereço + '</br>' +
+   ' Complemento: ' + featureCollection.features[0].properties.Complemento + '</br>' +
+   'Cep: ' + featureCollection.features[0].properties.Cep + '</br>' +
+   'Situação: ' + featureCollection.features[0].properties.Situação + '</br>';
+                    // 'Região Administrativa: ' + featureCollection.features[0].properties.Região Administrativa + '</br>';
+                  }
+                });
 
 //************************************SEÇÃO DE CONTROL LAYERS*****************************
 
@@ -170,71 +170,71 @@ L.control.layers(baseLayers,overlays).addTo(mymap);
 
 // htmllegend Plugin
 var htmlLegend = L.control.htmllegend({
-        position: 'bottomright',
+  position: 'bottomright',
 
-        legends: [{
-            name: 'Rios Principais',
-            layer: rioprin,
-            elements: [{
-                html: '',
-                style: {
-                    "background-color": "#0C6CB6",
-                    "width": "15px",
-                    "height": "2px"
-                }
-            }]
-        },{
-            name: 'Rios Secundários',
-            layer: riosec,
-            elements: [{
-                html: '',
-                style: {
-                    "background-color": "#0C6CB6",
-                    "width": "15px",
-                    "height": "2px"
-                }
-            }]
-        },{
-            name: 'Lagos e Lagoas',
-            layer: lagos,
-            elements: [{
-                html: '',
-                style: {
-                    "background-color": "#97DBF2",
-                    "width": "15px",
-                    "height": "15px"
-                }
-            }]
-        },{
-            name: 'Lote - Ocupação',
-            layer: lote_ocupa,
-            elements: [{
+  legends: [{
+    name: 'Rios Principais',
+    layer: rioprin,
+    elements: [{
+      html: '',
+      style: {
+        "background-color": "#0C6CB6",
+        "width": "15px",
+        "height": "2px"
+      }
+    }]
+  },{
+    name: 'Rios Secundários',
+    layer: riosec,
+    elements: [{
+      html: '',
+      style: {
+        "background-color": "#0C6CB6",
+        "width": "15px",
+        "height": "2px"
+      }
+    }]
+  },{
+    name: 'Lagos e Lagoas',
+    layer: lagos,
+    elements: [{
+      html: '',
+      style: {
+        "background-color": "#97DBF2",
+        "width": "15px",
+        "height": "15px"
+      }
+    }]
+  },{
+    name: 'Lote - Ocupação',
+    layer: lote_ocupa,
+    elements: [{
                 // label: 'Lote - Ocupação',
                 html: '',
                 style: {
-                    "background-color": "#FFEABE",
-                    "width": "15px",
-                    "height": "15px"
+                  "background-color": "#FFEABE",
+                  "width": "15px",
+                  "height": "15px"
                 }
-            }]
-        }, {
-            name: 'Mapa de Combate a Grilagem e Ocupação Irregulares ',
-            layer: limgrila,
-            opacity: 0.5,
-            elements: [{
+              }]
+            }, {
+              name: 'Mapa de Combate a Grilagem e Ocupação Irregulares ',
+              layer: limgrila,
+              opacity: 0.5,
+              elements: [{
                 html: '',
                 style: {
-                    "background-color": "#FF7F7F",
-                    "width": "15px",
-                    "height": "15px"
+                  "background-color": "#FF7F7F",
+                  "width": "15px",
+                  "height": "15px"
                 }
-            }]
-        }],
-        collapseSimple: true,
-        detectStretched: true,
-        collapsedOnInit: true,
-        defaultOpacity: 0.7,
-        visibleIcon: 'icon icon-eye',
-        hiddenIcon: 'icon icon-eye-slash'
-    });
-    mymap.addControl(htmlLegend);
+              }]
+            }],
+            collapseSimple: true,
+            detectStretched: true,
+            collapsedOnInit: true,
+            defaultOpacity: 0.7,
+            visibleIcon: 'icon icon-eye',
+            hiddenIcon: 'icon icon-eye-slash'
+          });
+mymap.addControl(htmlLegend);

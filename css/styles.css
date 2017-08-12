@@ -31,8 +31,8 @@ body { margin:0; padding:0; }
 
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
-	background: #0e6688;
-color: #fffafa;
+	background: #C7D0D3;
+color: #070E46;
 box-shadow: 0 5px 14px rgba(0,0,0,0.4);
 
 }
