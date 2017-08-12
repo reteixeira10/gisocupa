@@ -12,8 +12,9 @@ outdoors = L.tileLayer(mbUrl, {id: 'mapbox.outdoors',   attribution: mbAttr});
 
 //Cria o mapa
 var mymap = L.map('mapid', {
-  center: [-15.773, -47.759],
-  zoom: 11,
+  center: [-15.7940, -47.8831],
+  // center: [-15.773, -47.759],Centralizar no DF
+  zoom: 14,
   zoomControl: false, //Não inclui o zoom default do leaflet
   layers: [streets]
   });
@@ -238,12 +239,12 @@ mymap.addControl(htmlLegend);
 
 
 var identifiedFeature;
-var pane = document.getElementById('selectedFeatures');
+// var pane = document.getElementById('selectedFeatures');
 
 mymap.on('click', function (e) {
     if(identifiedFeature){
       mymap.removeLayer(identifiedFeature);
-      pane.innerText = 'Loading';
+      // pane.innerText = 'Loading';
     }
     lote_ocupa.identify().on(mymap).at(e.latlng).run(function(error, featureCollection){
       identifiedFeature = new L.GeoJSON(featureCollection.features[0], {
@@ -254,6 +255,6 @@ mymap.on('click', function (e) {
           };
         }
       }).addTo(mymap);
-      pane.innerText = 'Lote: ' +  featureCollection.features[0].properties.Lote;
+      // pane.innerText = 'Lote: ' +  featureCollection.features[0].properties.Lote;
     });
   });

@@ -1,6 +1,6 @@
 Coisas para implementar
 
-Inserir popup ao clicar nos objetos
+Inserir popup ao clicar nos objetos>ok
 Inserir link de ajuda
 Inserir atribute table
 Inserir pesquisa
@@ -10,11 +10,14 @@ Inserir Streetview
 Inserir homebutton>ok
 Inserir medidos de distância>ok
 Inserir basemap galeria>ok
-
+Inserir identify feature>ok
 Inserir legenda>ok
 Inserir reordenar layer>ok //obs: As camadas se sobrepões de acordo com a ordem de habilitação
 =====================================
 Detalhes a fazer:
+
+
+Remover panel de identify feature
 
 
 
