@@ -1,6 +1,3 @@
-// var serv_hidro = L.layerGroup();
-// var serv_lote_ocupa = L.layerGroup();
-
 //Define os atributos do mapa e insere o meu token do mopbox
 var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
 '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -17,9 +14,8 @@ outdoors = L.tileLayer(mbUrl, {id: 'mapbox.outdoors',   attribution: mbAttr});
 var mymap = L.map('mapid', {
   center: [-15.773, -47.759],
   zoom: 11,
-
-    zoomControl: false, //Não inclui o zoom default do leaflet
-    layers: [streets]
+  zoomControl: false, //Não inclui o zoom default do leaflet
+  layers: [streets]
   });
 
 
@@ -209,32 +205,55 @@ var htmlLegend = L.control.htmllegend({
     name: 'Lote - Ocupação',
     layer: lote_ocupa,
     elements: [{
-                // label: 'Lote - Ocupação',
-                html: '',
-                style: {
-                  "background-color": "#FFEABE",
-                  "width": "15px",
-                  "height": "15px"
-                }
-              }]
-            }, {
-              name: 'Mapa de Combate a Grilagem e Ocupação Irregulares ',
-              layer: limgrila,
-              opacity: 0.5,
-              elements: [{
-                html: '',
-                style: {
-                  "background-color": "#FF7F7F",
-                  "width": "15px",
-                  "height": "15px"
-                }
-              }]
-            }],
-            collapseSimple: true,
-            detectStretched: true,
-            collapsedOnInit: true,
-            defaultOpacity: 0.7,
-            visibleIcon: 'icon icon-eye',
-            hiddenIcon: 'icon icon-eye-slash'
-          });
+        // label: 'Lote - Ocupação',
+        html: '',
+        style: {
+          "background-color": "#FFEABE",
+          "width": "15px",
+          "height": "15px"
+        }
+      }]
+    }, {
+      name: 'Mapa de Combate a Grilagem e Ocupação Irregulares ',
+      layer: limgrila,
+      opacity: 0.5,
+      elements: [{
+        html: '',
+        style: {
+          "background-color": "#FF7F7F",
+          "width": "15px",
+          "height": "15px"
+        }
+      }]
+    }],
+    collapseSimple: true,
+    detectStretched: true,
+    collapsedOnInit: true,
+    defaultOpacity: 0.7,
+    visibleIcon: 'icon icon-eye',
+    hiddenIcon: 'icon icon-eye-slash'
+  });
 mymap.addControl(htmlLegend);
+
+
+
+var identifiedFeature;
+var pane = document.getElementById('selectedFeatures');
+
+mymap.on('click', function (e) {
+    if(identifiedFeature){
+      mymap.removeLayer(identifiedFeature);
+      pane.innerText = 'Loading';
+    }
+    lote_ocupa.identify().on(mymap).at(e.latlng).run(function(error, featureCollection){
+      identifiedFeature = new L.GeoJSON(featureCollection.features[0], {
+        style: function(){
+          return {
+            color: '#5C7DB8',
+            weight: 2
+          };
+        }
+      }).addTo(mymap);
+      pane.innerText = 'Lote: ' +  featureCollection.features[0].properties.Lote;
+    });
+  });

@@ -10,8 +10,8 @@ body { margin:0; padding:0; }
 	height: 20px;
 	z-index: 999;
 	position: absolute;
-	margin-left: 60px;
-	margin-top: 10px;
+	left: 60px;
+	top: 10px;
 	color: #FFFFFF;
 	background-color: #4C5A59;
 	border-radius: 5px;
@@ -42,3 +42,18 @@ box-shadow: 0 5px 14px rgba(0,0,0,0.4);
     text-align: left;
     border-radius: 2;
 }
+
+
+#selectedFeatures {
+  
+  min-height: 20px;
+  z-index: 999;
+  position: absolute;
+  left: 60px;
+  top: 40px;
+  color: #FFFFFF;
+  background-color: #4C5A59;
+  border-radius: 5px;
+  padding: 3px;
+  font-family: 'Oswald', sans-serif;
+  }
