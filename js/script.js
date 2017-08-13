@@ -134,10 +134,10 @@ lote_ocupa.bindPopup(function (error, featureCollection) {
    'Endereço: ' + featureCollection.features[0].properties.Endereço + '</br>' +
    ' Complemento: ' + featureCollection.features[0].properties.Complemento + '</br>' +
    'Cep: ' + featureCollection.features[0].properties.Cep + '</br>' +
-   'Situação: ' + featureCollection.features[0].properties.Situação + '</br>';
-                    // 'Região Administrativa: ' + featureCollection.features[0].properties.Região Administrativa + '</br>';
-                  }
-                });
+   'Situação: ' + featureCollection.features[0].properties.Situação + '</br>' +
+   'Reg. Administrativa: ' + featureCollection.features[0].properties['Região Administrativa'] + '</br>';
+      }
+    });
 
 //************************************SEÇÃO DE CONTROL LAYERS*****************************
 

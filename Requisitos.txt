@@ -17,7 +17,7 @@ Inserir reordenar layer>ok //obs: As camadas se sobrepões de acordo com a ordem
 Detalhes a fazer:
 
 
-Remover panel de identify feature
+Ferramenta de identify esta identificando mesmo sem a camada estar habilitada
 
 
 
