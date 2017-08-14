@@ -1,3 +1,5 @@
+//******************************SEÇÃO DE CRIAÇÃO DO MAPA**********************
+
 //Define os atributos do mapa e insere o meu token do mopbox
 var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
 '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -19,6 +21,8 @@ var mymap = L.map('mapid', {
   layers: [streets]
   });
 
+
+//******************************SEÇÃO DE FERRAMENTAS**********************
 
 //Cria o miniMap no canppo inferior direito - obs. foi definido um novo mapa aqui: osm
 var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -105,6 +109,7 @@ var base2016 = L.esri.dynamicMapLayer({
   useCors: false
 });
 
+
 //************************************SEÇÃO DE POPUPS*****************************
 
 rioprin.bindPopup(function (error, featureCollection) {
@@ -128,16 +133,17 @@ lote_ocupa.bindPopup(function (error, featureCollection) {
     return false;
   } else {
    return     'Setor: ' + featureCollection.features[0].properties.Setor + '</br>' +
-   'Quadra: ' + featureCollection.features[0].properties.Quadra + '</br>' +
-   'Conjunto: ' + featureCollection.features[0].properties.Conjunto + '</br>' +
-   'Lote: ' + featureCollection.features[0].properties.Lote + '</br>' +
-   'Endereço: ' + featureCollection.features[0].properties.Endereço + '</br>' +
-   ' Complemento: ' + featureCollection.features[0].properties.Complemento + '</br>' +
-   'Cep: ' + featureCollection.features[0].properties.Cep + '</br>' +
-   'Situação: ' + featureCollection.features[0].properties.Situação + '</br>' +
-   'Reg. Administrativa: ' + featureCollection.features[0].properties['Região Administrativa'];
+             'Quadra: ' + featureCollection.features[0].properties.Quadra + '</br>' +
+             'Conjunto: ' + featureCollection.features[0].properties.Conjunto + '</br>' +
+             'Lote: ' + featureCollection.features[0].properties.Lote + '</br>' +
+             'Endereço: ' + featureCollection.features[0].properties.Endereço + '</br>' +
+             ' Complemento: ' + featureCollection.features[0].properties.Complemento + '</br>' +
+             'Cep: ' + featureCollection.features[0].properties.Cep + '</br>' +
+             'Situação: ' + featureCollection.features[0].properties.Situação + '</br>' +
+             'Reg. Administrativa: ' + featureCollection.features[0].properties['Região Administrativa'];
       }
     });
+
 
 //************************************SEÇÃO DE CONTROL LAYERS*****************************
 
@@ -160,7 +166,6 @@ var overlays = {
 
 // http://leafletjs.com/reference-1.0.3.html#control-layers
 L.control.layers(baseLayers,overlays).addTo(mymap);
-
 
 
 //************************************SEÇÃO DE LEGENDAS*****************************
@@ -237,6 +242,7 @@ var htmlLegend = L.control.htmllegend({
 mymap.addControl(htmlLegend);
 
 
+//**********************SEÇÃO DE IDENTIFICAÇÃO DE FEIÇÃO***********************
 
 var identifiedFeature;
 // var pane = document.getElementById('selectedFeatures');
@@ -261,3 +267,37 @@ mymap.on('click', function (e) {
       // pane.innerText = 'Lote: ' +  featureCollection.features[0].properties.Lote;
     });
   });
+
+  mymap.on('click', function (e) {
+    if (!mymap.hasLayer(rioprin)) {
+        return;
+      }
+      else if(identifiedFeature){
+        mymap.removeLayer(identifiedFeature);
+      }
+      rioprin.identify().on(mymap).at(e.latlng).run(function(error, featureCollection){
+        identifiedFeature = new L.GeoJSON(featureCollection.features[0], {
+          style: function(){
+          }
+        }).addTo(mymap);
+      });
+    });
+
+    mymap.on('click', function (e) {
+      if (!mymap.hasLayer(lagos)) {
+          return;
+        }
+        else if(identifiedFeature){
+          mymap.removeLayer(identifiedFeature);
+        }
+        lagos.identify().on(mymap).at(e.latlng).run(function(error, featureCollection){
+          identifiedFeature = new L.GeoJSON(featureCollection.features[0], {
+            style: function(){
+              return {
+                color: '#5C7DB8',
+                weight: 2
+              };
+            }
+          }).addTo(mymap);
+        });
+      });

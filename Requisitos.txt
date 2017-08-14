@@ -1,7 +1,7 @@
-Coisas para implementar
+Coisas para implementar:
 
 Inserir popup ao clicar nos objetos>ok
-Inserir link de ajuda
+Inserir link de ajuda>ok
 Inserir atribute table
 Inserir pesquisa
 Inserir página de ajuda
@@ -16,19 +16,12 @@ Inserir reordenar layer>ok //obs: As camadas se sobrepões de acordo com a ordem
 =====================================
 Detalhes a fazer:
 
-
-Ferramenta de identify esta identificando mesmo sem a camada estar habilitada
-
-
+Colocar seleção nos nas feições de rio e de lago
 
 =====================================
+Usar o leaflet para criar a aplicação
 
+Usar os dados do GDF para provimento de dados
 
->Usar o leaflet para criar a aplicação
-
-
->Usar os dados do GDF para provimento de dados
-
-
->Usar o github pages para hospedar a aplicação(https://krekto.github.io/leaflet/).
+Usar o github pages para hospedar a aplicação(https://krekto.github.io/gisocupa/).
 No github, no repositório do projeto, clicar em settings, depois em github pages escolher a branch e salvar.
