@@ -1,51 +1,36 @@
-body { margin:0; padding:0; }
-#mapid { position: absolute; top:0; bottom:0; right:0; left:0; }
-
-.leaflet-control-measure .leaflet-control-measure-toggle, .leaflet-control-measure .leaflet-control-measure-toggle:hover{
-	border: 2px solid rgba(0,0,0,0.2);
-	background-clip: padding-box;
+body {
+  margin: 0;
+  padding: 0;
 }
 
-.ajuda{
-	height: 20px;
-	z-index: 999;
-	position: absolute;
-	left: 60px;
-	top: 10px;
-	color: #FFFFFF;
-	background-color: #4C5A59;
-	border-radius: 5px;
-	padding: 3px;
-	font-family: 'Oswald', sans-serif;
+#mapid {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
-.ajuda>a{
-	color: #FFFFFF;
-	text-decoration: none;
+.leaflet-control-measure .leaflet-control-measure-toggle, .leaflet-control-measure .leaflet-control-measure-toggle:hover {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-clip: padding-box;
 }
-
-.ajuda>a:hover{
-	color: #FF0000;
-	text-decoration: none;
-}
-
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
-	background: #C7D0D3;
-color: #070E46;
-box-shadow: 0 5px 14px rgba(0,0,0,0.4);
-
+  background: #C7D0D3;
+  color: #070E46;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.4);
 }
 
 .leaflet-popup-content-wrapper {
-    padding: 1px;
-    text-align: left;
-    border-radius: 2;
+  padding: 1px;
+  text-align: left;
+  border-radius: 2;
 }
 
 
 /*#selectedFeatures {
-  
+
   min-height: 20px;
   z-index: 999;
   position: absolute;
@@ -57,3 +42,74 @@ box-shadow: 0 5px 14px rgba(0,0,0,0.4);
   padding: 3px;
   font-family: 'Oswald', sans-serif;
   }*/
+
+.ajuda {
+  height: 20px;
+  z-index: 999;
+  position: absolute;
+  left: 60px;
+  top: 10px;
+  color: #FFFFFF;
+  background-color: #4C5A59;
+  border-radius: 5px;
+  padding: 3px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.ajuda>a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.ajuda>a:hover {
+  color: #FF0000;
+  text-decoration: none;
+}
+
+a.tooltip {
+  outline: none;
+}
+
+a.tooltip strong {
+  line-height: 30px;
+}
+
+a.tooltip:hover {
+  text-decoration: none;
+}
+
+a.tooltip span {
+  z-index: 10;
+  display: none;
+  padding: 14px 20px;
+  margin-top: -30px;
+  margin-left: 28px;
+  width: 300px;
+  line-height: 16px;
+}
+
+a.tooltip:hover span {
+    display: inline;
+    position: absolute;
+    color: #111;
+    border: 1px solid #DCA;
+    background: #fffAF0;
+    top: 30px;
+    left: 30px;
+}
+
+.callout {
+    z-index: 20;
+    position: absolute;
+    top: 0;
+    border: 0;
+    left: -12px;
+}
+
+
+/*CSS3 extras*/
+
+a.tooltip span {
+  border-radius: 4px;
+  box-shadow: 5px 5px 8px #CCC;
+}
