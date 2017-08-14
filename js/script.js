@@ -135,7 +135,7 @@ lote_ocupa.bindPopup(function (error, featureCollection) {
    ' Complemento: ' + featureCollection.features[0].properties.Complemento + '</br>' +
    'Cep: ' + featureCollection.features[0].properties.Cep + '</br>' +
    'Situação: ' + featureCollection.features[0].properties.Situação + '</br>' +
-   'Reg. Administrativa: ' + featureCollection.features[0].properties['Região Administrativa'] + '</br>';
+   'Reg. Administrativa: ' + featureCollection.features[0].properties['Região Administrativa'];
       }
     });
 
@@ -242,7 +242,10 @@ var identifiedFeature;
 // var pane = document.getElementById('selectedFeatures');
 
 mymap.on('click', function (e) {
-    if(identifiedFeature){
+  if (!mymap.hasLayer(lote_ocupa)) {
+      return;
+    }
+    else if(identifiedFeature){
       mymap.removeLayer(identifiedFeature);
       // pane.innerText = 'Loading';
     }
