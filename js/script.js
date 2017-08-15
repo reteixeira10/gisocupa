@@ -18,7 +18,7 @@ var mymap = L.map('mapid', {
   // center: [-15.773, -47.759],Centralizar no DF
   zoom: 14,
   zoomControl: false, //Não inclui o zoom default do leaflet
-  layers: [dark]
+  layers: [streets]
   });
 
 

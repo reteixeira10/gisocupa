@@ -71,7 +71,7 @@ a.tooltip {
 }
 
 a.tooltip strong {
-  line-height: 30px;
+  line-height: 10px;
 }
 
 a.tooltip:hover {
@@ -84,8 +84,9 @@ a.tooltip span {
   padding: 14px 20px;
   margin-top: -30px;
   margin-left: 28px;
-  width: 300px;
-  line-height: 16px;
+  width: 400px;
+  height: 600px;
+  line-height: 70px;
 }
 
 a.tooltip:hover span {
@@ -96,6 +97,7 @@ a.tooltip:hover span {
     background: #fffAF0;
     top: 30px;
     left: 30px;
+    font-size: 14px;
 }
 
 .callout {
@@ -112,4 +114,18 @@ a.tooltip:hover span {
 a.tooltip span {
   border-radius: 4px;
   box-shadow: 5px 5px 8px #CCC;
+}
+
+
+.wrap {
+   width:400px;
+   margin:0 auto;
+}
+.left_col {
+   float:left;
+   width:300px;
+}
+.right_col {
+  float:right;
+   width:100px;
 }

@@ -57,18 +57,35 @@
 <body>
 
   <div id="mapid"></div>
-
-    <!-- <div class="ajuda"><a href="#" target="_blank">Ajuda</a></div> -->
+    
     <div class="ajuda">        
-        <a  class="tooltip">Ajuda
-            
+        <a  class="tooltip">Ajuda            
             <span>
-                <img class="callout" src="./img/callout.gif" />
-                <img src="./img/minimap.JPG" style="float:right;" />
-                <strong>MiniMap</strong><br />
-                        Auxilia na localização sobre o mapa.
-            </span>
-          </a>
+                <img class="callout" src="./img/callout.gif" />          
+
+                  <!-- Colunas -->
+                  <div class="wrap">
+                      <div class="left_col">
+                          <strong>MiniMap</strong><br/>
+                          Auxilia na localização sobre o mapa.
+                      </div>
+                      <div class="right_col">
+                          <img src="./img/minimap.JPG" style="float:left;" />
+                      </div>
+                  </div>  
+
+                  <div class="wrap">
+                      <div class="left_col">
+                          <strong>Zoom</strong><br/>
+                          Aproximação, Extenção Inicial e Diminuição.
+                      </div>
+                      <div class="right_col">
+                          <img src="./img/zoom_home.JPG" style="float:left;" />
+                      </div>
+                  </div>             
+                
+            </span>            
+        </a>
     </div>
 
   <!-- <div id="selectedFeatures" class="leaflet-bar">No Features Selected</div> -->
