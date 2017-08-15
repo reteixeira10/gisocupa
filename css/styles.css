@@ -71,7 +71,7 @@ a.tooltip {
 }
 
 a.tooltip strong {
-  line-height: 10px;
+  /*line-height: 10px;*/
 }
 
 a.tooltip:hover {
@@ -86,7 +86,7 @@ a.tooltip span {
   margin-left: 28px;
   width: 400px;
   height: 600px;
-  line-height: 70px;
+  /*line-height: 70px;*/
 }
 
 a.tooltip:hover span {
@@ -96,8 +96,9 @@ a.tooltip:hover span {
     border: 1px solid #DCA;
     background: #fffAF0;
     top: 30px;
-    left: 30px;
+    left: 20px;
     font-size: 14px;
+
 }
 
 .callout {
@@ -116,16 +117,42 @@ a.tooltip span {
   box-shadow: 5px 5px 8px #CCC;
 }
 
-
+/*COLUNAS TOOLTIP HELP*/
 .wrap {
    width:400px;
    margin:0 auto;
 }
 .left_col {
    float:left;
-   width:300px;
+   width:100px;
+   height: 100px;
+   /*align center vertically and horizontally*/
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   text-align: center;
 }
+
+.center_col {
+   float:left;
+   width:200px;
+   height: 100px;
+   /*align center vertically and horizontally*/
+   display:flex;
+   align-items:center;
+   justify-content:center;
+}
+
 .right_col {
   float:right;
    width:100px;
+   height: 100px;
+   /*align center vertically and horizontally*/
+   display:flex;
+   align-items:center;
+   justify-content:center;
+}
+.right_col img{
+  max-height:  90px;
+
 }
