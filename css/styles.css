@@ -28,20 +28,6 @@ body {
   border-radius: 2;
 }
 
-/*#selectedFeatures {
-
-  min-height: 20px;
-  z-index: 999;
-  position: absolute;
-  left: 60px;
-  top: 40px;
-  color: #FFFFFF;
-  background-color: #4C5A59;
-  border-radius: 5px;
-  padding: 3px;
-  font-family: 'Oswald', sans-serif;
-  }*/
-
 .ajuda {
   height: 40px;
   width: 40px;
@@ -98,7 +84,7 @@ a.tooltip span {
   margin-top: -30px;
   margin-left: 28px;
   width: 450px;
-  height: 600px;
+  height: 550px;
 }
 
 a.tooltip:hover span {
@@ -109,7 +95,7 @@ a.tooltip:hover span {
     background: #fffAF0;
     top: 32px;
     left: 18px;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .callout {
@@ -128,7 +114,7 @@ a.tooltip:hover span {
 .left_col {
    float:left;
    width:100px;
-   height: 100px;
+   height: 90px;
    /*align center vertically and horizontally*/
    display:flex;
    align-items:center;
@@ -139,7 +125,7 @@ a.tooltip:hover span {
 .center_col {
    float:left;
    width:200px;
-   height: 100px;
+   height: 90px;
    text-align: justify;
    /*align center vertically and horizontally*/
    display:flex;
@@ -150,7 +136,7 @@ a.tooltip:hover span {
 .right_col {
   float:right;
    width:150px;
-   height: 100px;
+   height: 90px;
    /*align center vertically and horizontally*/
    display:flex;
    align-items:center;
