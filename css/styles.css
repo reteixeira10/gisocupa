@@ -28,7 +28,6 @@ body {
   border-radius: 2;
 }
 
-
 /*#selectedFeatures {
 
   min-height: 20px;
@@ -44,16 +43,22 @@ body {
   }*/
 
 .ajuda {
-  height: 20px;
+  height: 40px;
+  width: 40px;
   z-index: 999;
   position: absolute;
   left: 60px;
   top: 10px;
   color: #FFFFFF;
   background-color: #4C5A59;
-  border-radius: 5px;
   padding: 3px;
   font-family: 'Oswald', sans-serif;
+  /*align center vertically and horizontally*/
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size: 32px;
+  border-radius: 10px;
 }
 
 .ajuda>a {
@@ -66,12 +71,20 @@ body {
   text-decoration: none;
 }
 
-a.tooltip {
-  outline: none;
+.ajuda  {
+  max-width: 100%;
+  -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
-a.tooltip strong {
-  /*line-height: 10px;*/
+.ajuda:hover{
+  border-radius: 30px;
+  font-size: 38px;
+}
+
+a.tooltip {
+  outline: none;
 }
 
 a.tooltip:hover {
@@ -84,9 +97,8 @@ a.tooltip span {
   padding: 14px 20px;
   margin-top: -30px;
   margin-left: 28px;
-  width: 400px;
+  width: 450px;
   height: 600px;
-  /*line-height: 70px;*/
 }
 
 a.tooltip:hover span {
@@ -95,31 +107,22 @@ a.tooltip:hover span {
     color: #111;
     border: 1px solid #DCA;
     background: #fffAF0;
-    top: 30px;
-    left: 20px;
+    top: 32px;
+    left: 18px;
     font-size: 14px;
-
 }
 
 .callout {
     z-index: 20;
     position: absolute;
-    top: 0;
+    top: 10px;
     border: 0;
     left: -12px;
 }
 
-
-/*CSS3 extras*/
-
-a.tooltip span {
-  border-radius: 4px;
-  box-shadow: 5px 5px 8px #CCC;
-}
-
 /*COLUNAS TOOLTIP HELP*/
 .wrap {
-   width:400px;
+   width:450px;
    margin:0 auto;
 }
 .left_col {
@@ -137,6 +140,7 @@ a.tooltip span {
    float:left;
    width:200px;
    height: 100px;
+   text-align: justify;
    /*align center vertically and horizontally*/
    display:flex;
    align-items:center;
@@ -145,7 +149,7 @@ a.tooltip span {
 
 .right_col {
   float:right;
-   width:100px;
+   width:150px;
    height: 100px;
    /*align center vertically and horizontally*/
    display:flex;
@@ -154,5 +158,6 @@ a.tooltip span {
 }
 .right_col img{
   max-height:  90px;
+  max-width: 120px;
 
 }
