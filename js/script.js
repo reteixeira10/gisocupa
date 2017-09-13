@@ -1,28 +1,23 @@
-//******************************SEÇÃO DE CRIAÇÃO DO MAPA**********************
-
 //Define os atributos do mapa e insere o meu token do mopbox
 var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3Jla3RvIiwiYSI6ImNqNTVucjU1dzBkZjMyeHQ2OTYzcmY2bHgifQ.8QZMKxtCMwU-fTFwnIiYAA';
+              '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+              'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+              mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoia3Jla3RvIiwiYSI6ImNqNTVucjU1dzBkZjMyeHQ2OTYzcmY2bHgifQ.8QZMKxtCMwU-fTFwnIiYAA';
 
 //Define os mapas do mapbox e difine as respectivas variáveis de acesso.
 var dark   = L.tileLayer(mbUrl, {id: 'mapbox.dark', attribution: mbAttr}),
-streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
-satellite = L.tileLayer(mbUrl, {id: 'mapbox.satellite',   attribution: mbAttr});
-outdoors = L.tileLayer(mbUrl, {id: 'mapbox.outdoors',   attribution: mbAttr});
+    streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
+    satellite = L.tileLayer(mbUrl, {id: 'mapbox.satellite',   attribution: mbAttr});
+    outdoors = L.tileLayer(mbUrl, {id: 'mapbox.outdoors',   attribution: mbAttr});
 
 //Cria o mapa
 var mymap = L.map('mapid', {
-  center: [-15.7940, -47.8831],
-  // center: [-15.773, -47.759],Centralizar no DF
-  zoom: 14,
-  zoomControl: false, //Não inclui o zoom default do leaflet
-  layers: [streets]
-  });
-
-
-//******************************SEÇÃO DE FERRAMENTAS**********************
+    center: [-15.7940, -47.8831],
+    // center: [-15.773, -47.759],Centralizar no DF
+    zoom: 14,
+    zoomControl: false, //Não inclui o zoom default do leaflet
+    layers: [streets]
+    });
 
 //Cria o miniMap no canppo inferior direito - obs. foi definido um novo mapa aqui: osm
 var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -50,13 +45,7 @@ zoomHome.addTo(mymap);
 //Add scale ao mapa
 L.control.scale({imperial: false}).addTo(mymap);
 
-
-//************************************SEÇÃO DE CAMADAS*****************************
-
-// Aqui vão algumas coisas importantes :
-// A layer do tipo dinânica carrega com a tematização , ja mapserver normal não carrega a tematização
-
-var serv_hidro = 'https://www.geoservicos2.segeth.df.gov.br/arcgis/rest/services/Hidrografia/HIDROGRAFIA/MapServer';
+var serv_hidro = 'https://www.geoservicos1.segeth.df.gov.br/arcgis/rest/services/Hidrografia/HIDROGRAFIA/MapServer';
 
 //Atribui a primeira layer do grupo a variável rioprin
 var rioprin = L.esri.dynamicMapLayer({
@@ -80,7 +69,7 @@ var lagos = L.esri.dynamicMapLayer({
   useCors: false
 });
 
-var serv_lote_ocupa = 'https://www.geoservicos2.segeth.df.gov.br/arcgis/rest/services/Cadastro/LOTE_SITURB_OCUPACAO/MapServer';
+var serv_lote_ocupa = 'https://www.geoservicos1.segeth.df.gov.br/arcgis/rest/services/Cadastro/LOTE_SITURB_OCUPACAO/MapServer';
 
 //Atribui a layer lote_ocupa
 var lote_ocupa = L.esri.dynamicMapLayer({
@@ -90,7 +79,7 @@ var lote_ocupa = L.esri.dynamicMapLayer({
 });
 
 
-var areavermelha = 'https://www.geoservicos2.segeth.df.gov.br/arcgis/rest/services/Limites/AREAS_VERMELHAS/MapServer';
+var areavermelha = 'https://www.geoservicos1.segeth.df.gov.br/arcgis/rest/services/Limites/AREAS_VERMELHAS/MapServer';
 
 //Atribui a layer de limite do Combate a Grilagem e Ocupação Irregulares
 var limgrila = L.esri.dynamicMapLayer({
@@ -132,15 +121,15 @@ lote_ocupa.bindPopup(function (error, featureCollection) {
   if(error || featureCollection.features.length === 0) {
     return false;
   } else {
-   return     'Setor: ' + featureCollection.features[0].properties.Setor + '</br>' +
-             'Quadra: ' + featureCollection.features[0].properties.Quadra + '</br>' +
-             'Conjunto: ' + featureCollection.features[0].properties.Conjunto + '</br>' +
-             'Lote: ' + featureCollection.features[0].properties.Lote + '</br>' +
-             'Endereço: ' + featureCollection.features[0].properties.Endereço + '</br>' +
-             ' Complemento: ' + featureCollection.features[0].properties.Complemento + '</br>' +
-             'Cep: ' + featureCollection.features[0].properties.Cep + '</br>' +
-             'Situação: ' + featureCollection.features[0].properties.Situação + '</br>' +
-             'Reg. Administrativa: ' + featureCollection.features[0].properties['Região Administrativa'];
+   return     'Setor: ' + featureCollection.features[0].properties.setor + '</br>' +
+             'Quadra: ' + featureCollection.features[0].properties.quadra + '</br>' +
+             'Conjunto: ' + featureCollection.features[0].properties.conjunto + '</br>' +
+             'Lote: ' + featureCollection.features[0].properties.lote + '</br>' +
+             'Endereço: ' + featureCollection.features[0].properties.endereco + '</br>' +
+             ' Complemento: ' + featureCollection.features[0].properties.end_comp + '</br>' +
+             'Cep: ' + featureCollection.features[0].properties.cep + '</br>' +
+             'Situação: ' + featureCollection.features[0].properties.situacao + '</br>' +
+             'Reg. Administrativa: ' + featureCollection.features[0].properties.ra;
       }
     });
 
