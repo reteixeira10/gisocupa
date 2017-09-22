@@ -55,17 +55,10 @@ var rioprin = L.esri.dynamicMapLayer({
   useCors: false
 });
 
-//Atribui a segunda layer do grupo a variável riosec
-var riosec = L.esri.dynamicMapLayer({
-  url: serv_hidro,
-  layers: [2],//Carrega uma layer específica em um group layers
-  useCors: false
-});
-
 //Atribui a terceira layer do grupo a variável lagos
 var lagos = L.esri.dynamicMapLayer({
   url: serv_hidro,
-  layers: [3],//Carrega uma layer específica em um group layers
+  layers: [2],//Carrega uma layer específica em um group layers
   useCors: false
 });
 
@@ -146,7 +139,6 @@ var baseLayers = {
 
 var overlays = {
   "Rios Pincipais": rioprin,
-  "Rios Secundários": riosec,
   "Lagos e Lagoas": lagos,
   "Lote Ocupação": lote_ocupa,
   "Limite Grilagem e Ocupação Irregular": limgrila,
@@ -166,17 +158,6 @@ var htmlLegend = L.control.htmllegend({
   legends: [{
     name: 'Rios Principais',
     layer: rioprin,
-    elements: [{
-      html: '',
-      style: {
-        "background-color": "#0C6CB6",
-        "width": "15px",
-        "height": "2px"
-      }
-    }]
-  },{
-    name: 'Rios Secundários',
-    layer: riosec,
     elements: [{
       html: '',
       style: {
